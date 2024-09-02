@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Oswald, Lato } from "next/font/google";
+import { ViewTransitions } from "next-view-transitions";
+
+import Header from "@/components/Header";
+
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const oswald = Oswald({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-oswald",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-lato",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +30,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={`${oswald.variable} ${lato.variable}`}>
+          <div
+            className="fixed top-0 left-0 w-full h-full min-h-full opacity-10 -z-10"
+            style={{
+              backgroundColor: "#ffffff",
+              opacity: 0.1,
+              backgroundImage:
+                "repeating-radial-gradient( circle at 0 0, transparent 0, #ffffff 6px ), repeating-linear-gradient( #00ff9155, #00ff91 )",
+            }}
+          />
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

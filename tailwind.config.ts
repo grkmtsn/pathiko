@@ -12,7 +12,7 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
         "2xl": "1400px",
       },
@@ -52,6 +52,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: "hsl(var(--brand))",
+        ["brand-900"]: "hsl(var(--brand-900))",
+        ["brand-700"]: "hsl(var(--brand-700))",
+        ["brand-300"]: "hsl(var(--brand-300))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -67,10 +71,21 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "slide-right": {
+          '0%': { transform: 'translateX(0)', opacity: '1' },
+          '50%': { transform: 'translateX(10px)', opacity: '0' },
+          '51%': { transform: 'translateX(-10px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "slide-right": "slide-right 0.5s ease-in-out forwards"
+      },
+      fontFamily: {
+        oswald: ["var(--font-oswald)"],
+        lato: ["var(--font-lato)"]
       },
     },
   },
